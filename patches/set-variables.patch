@@ -1,0 +1,54 @@
+Set path variables to proper locations
+--- a/configure
++++ b/configure
+@@ -706,17 +706,17 @@
+ ################ Tcl / Tk 
+ # location of TCL library and include file.
+ # If left blank, standard system  directories will be searched.
+-#$stock_tcl_include_dir=$ENV{"TCL_INCLUDE_DIR"} || "/usr/local/include";
+-#$stock_tcl_library_dir=$ENV{"TCL_LIBRARY_DIR"} || "/usr/local/lib";
+-$stock_tcl_include_dir=$ENV{"TCL_INCLUDE_DIR"} || "$vmd_library_dir/tcl/include";
+-$stock_tcl_library_dir=$ENV{"TCL_LIBRARY_DIR"} || "$vmd_library_dir/tcl/lib_$config_arch";
++$stock_tcl_include_dir=$ENV{"TCL_INCLUDE_DIR"} || "/usr/include/tcl";
++$stock_tcl_library_dir=$ENV{"TCL_LIBRARY_DIR"} || "/usr/lib";
++#$stock_tcl_include_dir=$ENV{"TCL_INCLUDE_DIR"} || "$vmd_library_dir/tcl/include";
++#$stock_tcl_library_dir=$ENV{"TCL_LIBRARY_DIR"} || "$vmd_library_dir/tcl/lib_$config_arch";
+ 
+ 
+ # location of Tk (for TK option)
+-#$stock_tk_include_dir=$ENV{"TK_INCLUDE_DIR"} || "/usr/local/include";
+-#$stock_tk_library_dir=$ENV{"TK_LIBRARY_DIR"} || "/usr/local/lib";
+-$stock_tk_include_dir=$ENV{"TK_INCLUDE_DIR"} || "$vmd_library_dir/tk/include";
+-$stock_tk_library_dir=$ENV{"TK_LIBRARY_DIR"} || "$vmd_library_dir/tk/lib_$config_arch";
++$stock_tk_include_dir=$ENV{"TK_INCLUDE_DIR"} || "/usr/include/tk";
++$stock_tk_library_dir=$ENV{"TK_LIBRARY_DIR"} || "/usr/lib/tk8.6";
++#$stock_tk_include_dir=$ENV{"TK_INCLUDE_DIR"} || "$vmd_library_dir/tk/include";
++#$stock_tk_library_dir=$ENV{"TK_LIBRARY_DIR"} || "$vmd_library_dir/tk/lib_$config_arch";
+ 
+ if ($config_tk && !$config_tcl) {
+   die "Error, Tk option requires Tcl\n";
+@@ -1375,15 +1375,15 @@
+ ###################
+ # location of Python library and include file.
+ # If left blank, standard system  directories will be searched.
+-#$stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "/usr/local/include";
+-#$stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "/usr/local/lib";
+-$stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "$vmd_library_dir/python/lib_$config_arch/include/python2.5";
+-$stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/config";
+-
+-#$stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "/usr/local/include";
+-#$stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "/usr/local/lib";
+-$stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "$vmd_library_dir/numpy/lib_$config_arch/include";
+-$stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/site-packages/numpy/core/include";
++$stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "/usr/include/python2.7";
++$stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "/usr/lib/python2.7/config-i386-linux-gnu";
++#$stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "$vmd_library_dir/python/lib_$config_arch/include/python2.5";
++#$stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/config";
++
++$stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "/usr/include/python2.7/numpy";
++$stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "/usr/lib/python2.7/dist-packages/numpy/core/lib";
++#$stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "$vmd_library_dir/numpy/lib_$config_arch/include";
++#$stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/site-packages/numpy/core/include";
+ 
+ $python_defines     = "-DVMDPYTHON";
+ $python_include     = "-I$stock_python_include_dir -I$stock_numpy_include_dir -I$stock_numpy_library_dir";

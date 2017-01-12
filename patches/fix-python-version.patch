@@ -1,0 +1,12 @@
+Use python2.7
+--- a/configure
++++ b/configure
+@@ -1365,7 +1365,7 @@
+ $python_defines     = "-DVMDPYTHON";
+ $python_include     = "-I$stock_python_include_dir -I$stock_numpy_include_dir -I$stock_numpy_library_dir";
+ $python_library     = "-L$stock_python_library_dir";
+-$python_libs        = "-lpython2.5 -lpthread";
++$python_libs        = "-lpython2.7 -lpthread";
+ @python_h           = ('PythonTextInterp.h',
+                        'VMDTkinterMenu.h',
+ 		       'py_commands.h',

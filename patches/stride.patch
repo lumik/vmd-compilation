@@ -1,0 +1,18 @@
+Use stride from package if installed
+--- a/bin/vmd.sh
++++ b/bin/vmd.sh
+@@ -405,6 +405,14 @@
+ # Stride -- used to generate cartoon representations etc.
+ if [ -z "$STRIDE_BIN" ]
+ then
++  if [ -x "/usr/bin/stride" ]
++  then
++    STRIDE_BIN="/usr/bin/stride"
++    export STRIDE_BIN
++  fi
++fi
++if [ -z "$STRIDE_BIN" ]
++then
+   if [ -x "$MASTERVMDDIR/stride_$ARCH" ]
+   then
+     STRIDE_BIN="$VMDDIR/stride_$ARCH"

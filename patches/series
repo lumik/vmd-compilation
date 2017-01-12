@@ -1,0 +1,6 @@
+set-paths.patch
+fix-tk-tcl-version.patch
+fix-configure.patch
+fix-python2.7.patch
+use-bash-script.patch
+stride.patch

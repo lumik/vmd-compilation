@@ -1,0 +1,12 @@
+Use bash script even if csh is installed
+--- a/configure
++++ b/configure
+@@ -3260,7 +3260,7 @@
+ 	-\$(COPY) ../data/.vmdrc ../data/.vmdsensors ../data/vmd_completion.dat "$install_library_dir"
+ 	\$(CD) $vmd_bin_dir ; \\
+ 	if [ -f run_vmd_tmp ]; then \$(DELETE) run_vmd_tmp; fi ; \\
+-	if [ ! -x "/bin/csh" ]; then \\
++	if [ true ]; then \\
+ 		\$(ECHO) "Info: /bin/csh shell not found, installing Bourne shell startup script instead" ; \\
+ 		\$(ECHO) '#!/bin/sh' >> run_vmd_tmp ; \\
+ 		\$(ECHO) 'defaultvmddir="$install_library_dir"' >> run_vmd_tmp ; \\

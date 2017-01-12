@@ -1,0 +1,33 @@
+Remove invalid check for existence of plugins directory.
+--- a/configure
++++ b/configure
+@@ -135,29 +135,6 @@
+ # Configure script code begins here
+ ############################################################################
+ 
+-## Test for existence of a properly compiled plugin tree
+-if (!(-e "plugins")) {
+-  print "\n";
+-  print "VMD plugin directory not found.\n";
+-  print "Please compile the VMD plugins and do 'make distrib' to copy them\n";
+-  print "into a 'plugins' directory linked or located in this directory.\n";
+-  print "Be sure your PLUGINDIR environment variable is set before running\n";
+-  print "'make distrib' in the plugin build area.\n";
+-  print "\n";
+-  die "Halting configuration until VMD plugins are built.\n";
+-} else {
+-  if (!(-e "plugins/include/vmdplugin.h")) {
+-    print "\n";
+-    print "VMD plugin include files or directory not found.\n";
+-    print "Please compile the VMD plugins and do 'make distrib' to copy them\n";
+-    print "into a 'plugins' directory linked or located in this directory.\n";
+-    print "Be sure your PLUGINDIR environment variable is set before running\n";
+-    print "'make distrib' in the plugin build area.\n";
+-    print "\n";
+-    die "Halting configuration until VMD plugins are built.\n";
+-  }
+-} 
+-
+ #################### Parse command line options   ###########
+ # list of allowed architectures
+ @archlist=('AIX6_64', 'ANDROIDARMV7A', 'BLUEGENEQ', 'BLUEWATERS', 'CRAY_XC', 'CRAY_XK', 'FREEBSD', 'FREEBSDAMD64', 'LINUX', 'LINUXAMD64', 'LINUXCARMA', 'LINUXPPC64', 'MACOSX', 'MACOSXX86', 'MACOSXX86_64', 'OPENPOWER', 'SUMMIT', 'SOLARIS2', 'SOLARIS2_64', 'SOLARISX86', 'SOLARISX86_64', 'WIN32', 'WIN64');
