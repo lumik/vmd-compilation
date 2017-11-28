@@ -2,7 +2,7 @@
 
 ```
 # install dependencies
-sudo apt install tcl tcl-dev libtcl8.6 tk tk-dev libfltk1.3 libfltk1.3-dev netcdf-bin libnetcdf-dev
+sudo apt install tcl tcl-dev libtcl8.6 tk tk-dev libfltk1.3 libfltk1.3-dev netcdf-bin libnetcdf-dev flex
 
 # download vmd-1.9.3.src.tar.gz to 'vmd' directory
 # tachyon-0.99b6.tar.gz from http://jedi.ks.uiuc.edu/~johns/raytracer/files/ to 'vmd' directory
@@ -52,6 +52,28 @@ cp ../tachyon/compile/linux-thr-ogl/tachyon lib/tachyon/tachyon_LINUX
 
 # download appropriate version of vmd and copy surf and stride to its
 # position in lib directory
+cd /lib/stride
+# download stride from ftp://ftp.ebi.ac.uk/pub/software/unix/stride/src/stride.tar.gz
+tar -xzvf stride.tar.gz
+# Change line 43 of stride.h from
+#  #define MAX_AT_IN_RES             50
+# to
+#  #define MAX_AT_IN_RES             75
+# because there are many structures with non-standard residues
+# containing more than 50 atoms.
+#
+# Change line 96 of stride.c from
+#  return(SUCCESS);
+# to
+#  return(0);
+# since a program should return 0 if everything ended correctly.
+make
+mv stride stride_LINUX
+cd ../surf
+tar -xvf surf.tar.Z
+make depend
+make
+mv surf surf_LINUX
 
 # apply patches in the order from ../patches/series file
 patch configure < ../patches/set-paths.patch
@@ -68,5 +90,5 @@ cp ../cofigure.options .
 # compile
 cd src
 make veryclean
-make
+make -j8
 ```
